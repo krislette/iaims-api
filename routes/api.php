@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AgencyController;
+use App\Http\Controllers\AuditAreaController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -26,3 +27,7 @@ Route::get('/user', function (Request $request) {
 Route::prefix('v1')->group(function () {
     Route::apiResource('agencies', AgencyController::class);
 });
+
+// Audit area routes
+Route::apiResource('audit-areas', AuditAreaController::class);
+Route::get('audit-areas-parent-options', [AuditAreaController::class, 'getParentOptions']);
