@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AgencyController;
+use App\Http\Controllers\AuditorController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -22,7 +23,11 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-// Agency routes
+// API v1 routes
 Route::prefix('v1')->group(function () {
+    // Agency routes
     Route::apiResource('agencies', AgencyController::class);
+
+    // Auditor routes
+    Route::apiResource('auditors', AuditorController::class);
 });
