@@ -8,7 +8,7 @@ class Auditor extends Model
 {
     protected $table = 'tblauditors';
     protected $primaryKey = 'aur_id';
-    public $incrementing = false; // Since you're using custom IDs
+    public $incrementing = false;
     
     protected $fillable = [
         'aur_id',

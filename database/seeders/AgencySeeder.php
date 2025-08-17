@@ -12,7 +12,7 @@ class AgencySeeder extends Seeder
      */
     public function run(): void
     {
-        // First, let's seed some agency groupings if they don't exist
+        // First, seed some agency groupings if they don't exist
         $groupings = [
             ['agn_grp_code' => 'A1', 'agn_grp_name' => 'National Government Agencies'],
             ['agn_grp_code' => 'A2', 'agn_grp_name' => 'Local Government Units'],
