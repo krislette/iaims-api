@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             // Seed agencies first
             AgencySeeder::class,
+            AuditAreaSeeder::class,
             // Then seed auditors
             AuditorSeeder::class,
         ]);
