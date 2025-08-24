@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             InternalControlSeeder::class,
             DocumentTypeSeeder::class,
             AuditTypeSeeder::class,
+            UserAccountSeeder::class,
         ]);
     }
 }
