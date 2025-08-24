@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Model;
 
 class Auditor extends Model
@@ -52,5 +53,62 @@ class Auditor extends Model
     public function agency(): BelongsTo
     {
         return $this->belongsTo(Agency::class, 'aur_agn_id', 'agn_id');
+    }
+
+    /**
+     * Get the user account associated with this auditor
+     */
+    public function userAccount(): HasOne
+    {
+        return $this->hasOne(UserAccount::class, 'usr_aur_id', 'aur_id');
+    }
+
+    /**
+     * Scope to get only active auditors
+     */
+    public function scopeActive($query)
+    {
+        return $query->where('aur_active', 1);
+    }
+
+    /**
+     * Scope to get only internal auditors
+     */
+    public function scopeInternal($query)
+    {
+        return $query->where('aur_external', 0);
+    }
+
+    /**
+     * Scope to get only external auditors
+     */
+    public function scopeExternal($query)
+    {
+        return $query->where('aur_external', 1);
+    }
+
+    /**
+     * Get full name attribute
+     */
+    public function getFullNameAttribute()
+    {
+        $parts = array_filter([
+            $this->aur_name_prefix,
+            $this->aur_name_first,
+            $this->aur_name_middle,
+            $this->aur_name_last,
+            $this->aur_name_suffix
+        ]);
+
+        return implode(' ', $parts);
+    }
+
+    /**
+     * Get formatted name attribute (Last, First Middle)
+     */
+    public function getFormattedNameAttribute()
+    {
+        $firstName = trim($this->aur_name_first . ' ' . $this->aur_name_middle);
+        return $this->aur_name_last . ', ' . $firstName;
     }
 }
