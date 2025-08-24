@@ -11,7 +11,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('tblagencies', function (Blueprint $table) {
-            $table->integer('agn_id')->primary();
+            $table->integer('agn_id')->primary()->autoIncrement();
             $table->string('agn_name', 255);
             $table->string('agn_acronym', 30);
             $table->char('agn_grp_code', 2);
