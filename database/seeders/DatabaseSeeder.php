@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             AuditAreaSeeder::class,
             AuditCriteriaSeeder::class,
             InternalControlSeeder::class,
+            DocumentTypeSeeder::class,
         ]);
     }
 }
