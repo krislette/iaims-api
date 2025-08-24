@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AgencyController;
+use App\Http\Controllers\AuditAreaController;
 use App\Http\Controllers\AuditorController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
@@ -27,4 +28,5 @@ Route::get('/user', function (Request $request) {
 Route::prefix('v1')->group(function () {
     Route::apiResource('agencies', AgencyController::class);
     Route::apiResource('auditors', AuditorController::class);
+    Route::apiResource('audit-areas', AuditAreaController::class);
 });
