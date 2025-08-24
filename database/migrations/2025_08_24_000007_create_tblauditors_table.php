@@ -11,7 +11,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('tblauditors', function (Blueprint $table) {
-            $table->integer('aur_id')->primary();
+            $table->integer('aur_id')->primary()->autoIncrement();
             $table->string('aur_name_last', 50);
             $table->string('aur_name_first', 50);
             $table->string('aur_name_middle', 50)->nullable();

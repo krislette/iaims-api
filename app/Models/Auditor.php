@@ -13,11 +13,10 @@ class Auditor extends Model
 
     protected $table = 'tblauditors';
     protected $primaryKey = 'aur_id';
-    public $incrementing = false;
+    public $incrementing = true;
     protected $keyType = 'int';
 
     protected $fillable = [
-        'aur_id',
         'aur_name_last',
         'aur_name_first',
         'aur_name_middle',
