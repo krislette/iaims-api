@@ -55,7 +55,6 @@ class UserAccountController extends Controller
     {
         try {
             $validated = $request->validate([
-                'usr_id' => 'required|integer|unique:tbluser_accounts,usr_id',
                 'usr_name' => 'required|string|max:150',
                 'usr_aur_id' => 'required|integer|exists:tblauditors,aur_id',
                 'usr_level' => 'required|integer|min:1|max:127',

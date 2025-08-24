@@ -13,11 +13,10 @@ class UserAccount extends Authenticatable
 
     protected $table = 'tbluser_accounts';
     protected $primaryKey = 'usr_id';
-    public $incrementing = false;
+    public $incrementing = true;
     protected $keyType = 'int';
 
     protected $fillable = [
-        'usr_id',
         'usr_name',
         'usr_aur_id',
         'usr_level',
