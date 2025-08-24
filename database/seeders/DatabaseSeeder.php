@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
             AgencySeeder::class,
             AuditorSeeder::class,
             AuditAreaSeeder::class,
+            AuditCriteriaSeeder::class,
         ]);
     }
 }
