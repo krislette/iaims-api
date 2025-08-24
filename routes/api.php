@@ -1,35 +1,39 @@
 <?php
 
-use App\Http\Controllers\AgencyController;
-use App\Http\Controllers\AuditAreaController;
-use App\Http\Controllers\AuditCriteriaController;
-use App\Http\Controllers\AuditorController;
-use App\Http\Controllers\AuditTypeController;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\DocumentTypeController;
-use App\Http\Controllers\InternalControlController;
+use App\Http\Controllers\{
+    AgencyController,
+    AuditAreaController,
+    AuditCriteriaController,
+    AuditorController,
+    AuditTypeController,
+    AuthController,
+    DocumentTypeController,
+    InternalControlController,
+    UserAccountController
+};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
- * .------------.
- * | API Routes |
- * '------------'
+ * |--------------------------------------------------------------------------|
+ * | API Routes                                                               |
+ * |--------------------------------------------------------------------------|
  */
 
-Route::post('/register', [AuthController::class, 'register']);
-Route::post('/login', [AuthController::class, 'login']);
-
-Route::middleware('auth:sanctum')->group(function () {
-    Route::post('/logout', [AuthController::class, 'logout']);
+// Authentication
+Route::prefix('auth')->group(function () {
+    Route::post('/register', [AuthController::class, 'register']);
+    Route::post('/login', [AuthController::class, 'login']);
+    Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
 });
 
-Route::get('/user', function (Request $request) {
+// Current user info
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
-})->middleware('auth:sanctum');
+});
 
-// V1 routes
-Route::prefix('v1')->group(function () {
+// Versioned API routes (v1)
+Route::prefix('v1')->middleware('auth:sanctum')->group(function () {
     Route::apiResource('agencies', AgencyController::class);
     Route::apiResource('auditors', AuditorController::class);
     Route::apiResource('audit-areas', AuditAreaController::class);
@@ -37,4 +41,5 @@ Route::prefix('v1')->group(function () {
     Route::apiResource('internal-controls', InternalControlController::class);
     Route::apiResource('document-types', DocumentTypeController::class);
     Route::apiResource('audit-types', AuditTypeController::class);
+    Route::apiResource('user-accounts', UserAccountController::class);
 });
