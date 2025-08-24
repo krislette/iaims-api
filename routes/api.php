@@ -5,6 +5,7 @@ use App\Http\Controllers\AuditAreaController;
 use App\Http\Controllers\AuditCriteriaController;
 use App\Http\Controllers\AuditorController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DocumentTypeController;
 use App\Http\Controllers\InternalControlController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -33,4 +34,5 @@ Route::prefix('v1')->group(function () {
     Route::apiResource('audit-areas', AuditAreaController::class);
     Route::apiResource('audit-criteria', AuditCriteriaController::class);
     Route::apiResource('internal-controls', InternalControlController::class);
+    Route::apiResource('document-types', DocumentTypeController::class);
 });
