@@ -13,11 +13,11 @@ return new class extends Migration {
         Schema::create('tblaudit_areas', function (Blueprint $table) {
             $table->tinyInteger('ara_id')->primary();
             $table->string('ara_name', 255);
-            $table->tinyInteger('ara_ara_id');
+            $table->tinyInteger('ara_ara_id')->nullable();
             $table->tinyInteger('ara_active');
             $table->timestamps();
 
-            $table->foreign('ara_ara_id')->references('ara_id')->on('tblaudit_areas');
+            $table->foreign('ara_ara_id')->references('ara_id')->on('tblaudit_areas')->onDelete('cascade');
         });
     }
 
