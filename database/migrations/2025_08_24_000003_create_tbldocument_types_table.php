@@ -11,7 +11,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('tbldocument_types', function (Blueprint $table) {
-            $table->tinyInteger('doc_typ_id')->primary();
+            $table->tinyInteger('doc_typ_id')->primary()->autoIncrement();
             $table->string('doc_typ_name', 100);
             $table->tinyInteger('doc_typ_active');
             $table->timestamps();

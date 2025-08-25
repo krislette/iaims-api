@@ -13,11 +13,10 @@ class InternalControl extends Model
 
     protected $table = 'tblinternal_controls';
     protected $primaryKey = 'ic_id';
-    public $incrementing = false;
+    public $incrementing = true;
     protected $keyType = 'int';
 
     protected $fillable = [
-        'ic_id',
         'ic_ara_id',
         'ic_category',
         'ic_desc',

@@ -11,7 +11,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('tblaudit_types', function (Blueprint $table) {
-            $table->tinyInteger('aud_typ_id')->primary();
+            $table->tinyInteger('aud_typ_id')->primary()->autoIncrement();
             $table->string('aud_typ_name', 50);
             $table->tinyInteger('aud_typ_active');
             $table->timestamps();

@@ -11,11 +11,10 @@ class DocumentType extends Model
 
     protected $table = 'tbldocument_types';
     protected $primaryKey = 'doc_typ_id';
-    public $incrementing = false;
+    public $incrementing = true;
     protected $keyType = 'int';
 
     protected $fillable = [
-        'doc_typ_id',
         'doc_typ_name',
         'doc_typ_active',
     ];

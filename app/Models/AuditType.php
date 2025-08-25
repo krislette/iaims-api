@@ -11,11 +11,10 @@ class AuditType extends Model
 
     protected $table = 'tblaudit_types';
     protected $primaryKey = 'aud_typ_id';
-    public $incrementing = false;
+    public $incrementing = true;
     protected $keyType = 'int';
 
     protected $fillable = [
-        'aud_typ_id',
         'aud_typ_name',
         'aud_typ_active',
     ];

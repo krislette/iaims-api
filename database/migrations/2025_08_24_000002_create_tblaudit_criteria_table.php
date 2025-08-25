@@ -11,7 +11,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('tblaudit_criteria', function (Blueprint $table) {
-            $table->integer('cra_id')->primary();
+            $table->integer('cra_id')->primary()->autoIncrement();
             $table->string('cra_name', 255);
             $table->string('cra_areas', 100);
             $table->string('cra_references', 255);

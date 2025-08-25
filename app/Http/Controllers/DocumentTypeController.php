@@ -46,7 +46,6 @@ class DocumentTypeController extends Controller
     {
         try {
             $validated = $request->validate([
-                'doc_typ_id' => 'required|integer|min:0|max:127|unique:tbldocument_types,doc_typ_id',
                 'doc_typ_name' => 'required|string|max:100',
                 'doc_typ_active' => 'required|integer|in:0,1',
             ]);

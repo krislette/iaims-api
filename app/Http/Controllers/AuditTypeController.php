@@ -46,7 +46,6 @@ class AuditTypeController extends Controller
     {
         try {
             $validated = $request->validate([
-                'aud_typ_id' => 'required|integer|min:0|max:127|unique:tblaudit_types,aud_typ_id',
                 'aud_typ_name' => 'required|string|max:50',
                 'aud_typ_active' => 'required|integer|in:0,1',
             ]);

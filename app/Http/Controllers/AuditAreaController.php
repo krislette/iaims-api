@@ -50,7 +50,6 @@ class AuditAreaController extends Controller
     {
         try {
             $validated = $request->validate([
-                'ara_id' => 'required|integer|min:0|max:127|unique:tblaudit_areas,ara_id',
                 'ara_name' => 'required|string|max:255',
                 'ara_ara_id' => 'nullable|integer|min:0|max:127|exists:tblaudit_areas,ara_id',
                 'ara_active' => 'required|integer|in:0,1',

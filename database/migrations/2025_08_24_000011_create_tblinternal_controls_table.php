@@ -11,7 +11,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('tblinternal_controls', function (Blueprint $table) {
-            $table->integer('ic_id')->primary();
+            $table->integer('ic_id')->primary()->autoIncrement();
             $table->tinyInteger('ic_ara_id');
             $table->string('ic_category', 100);
             $table->string('ic_desc', 500);

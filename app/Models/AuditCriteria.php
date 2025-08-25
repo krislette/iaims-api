@@ -11,11 +11,10 @@ class AuditCriteria extends Model
 
     protected $table = 'tblaudit_criteria';
     protected $primaryKey = 'cra_id';
-    public $incrementing = false;
+    public $incrementing = true;
     protected $keyType = 'int';
 
     protected $fillable = [
-        'cra_id',
         'cra_name',
         'cra_areas',
         'cra_references',

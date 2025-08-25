@@ -13,11 +13,10 @@ class AuditArea extends Model
 
     protected $table = 'tblaudit_areas';
     protected $primaryKey = 'ara_id';
-    public $incrementing = false;
+    public $incrementing = true;
     protected $keyType = 'int';
 
     protected $fillable = [
-        'ara_id',
         'ara_name',
         'ara_ara_id',
         'ara_active',

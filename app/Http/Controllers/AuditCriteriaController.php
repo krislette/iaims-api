@@ -48,7 +48,6 @@ class AuditCriteriaController extends Controller
     {
         try {
             $validated = $request->validate([
-                'cra_id' => 'required|integer|unique:tblaudit_criteria,cra_id',
                 'cra_name' => 'required|string|max:255',
                 'cra_areas' => 'required|string|max:100',
                 'cra_references' => 'required|string|max:255',
