@@ -59,13 +59,13 @@ class UserAccount extends Authenticatable
     {
         $levels = [
             1 => 'System Administrator',
-            2 => 'Internal Auditor',
-            3 => 'External Auditor',
-            4 => 'Audit Manager',
-            5 => 'Audit Supervisor',
-            6 => 'Senior Auditor',
-            7 => 'Junior Auditor',
-            8 => 'Read Only User',
+            2 => 'Director',
+            3 => 'Division Chief',
+            4 => 'Supervisor',
+            5 => 'Internal Auditor',
+            6 => 'External Auditor',
+            7 => 'Auditee',
+            8 => 'Authorized Viewer',
         ];
 
         return $levels[$this->usr_level] ?? 'Unknown Level';
