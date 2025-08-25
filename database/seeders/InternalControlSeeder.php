@@ -37,7 +37,7 @@ class InternalControlSeeder extends Seeder
             ],
             [
                 'ic_id' => 2002,
-                'ic_ara_id' => $auditAreas[0]->ara_id,
+                'ic_ara_id' => $auditAreas[1]->ara_id,
                 'ic_category' => 'Documentation Controls',
                 'ic_desc' => 'Controls to ensure adequate documentation and record-keeping for all significant transactions and activities.',
                 'ic_active' => 1,
