@@ -55,18 +55,9 @@ class AuditAreaController extends Controller
                 'ara_active' => 'required|integer|in:0,1',
             ]);
 
-            // Check for circular reference if parent is provided
+            // On creation, only check for circular reference
             if (!empty($validated['ara_ara_id'])) {
-                if ($validated['ara_id'] == $validated['ara_ara_id']) {
-                    return response()->json([
-                        'success' => false,
-                        'message' => 'An audit area cannot be its own parent',
-                    ], 422);
-                }
-
-                // Check if the proposed parent would create a circular reference
-                $parent = AuditArea::find($validated['ara_ara_id']);
-                if ($parent && $this->wouldCreateCircularReference($validated['ara_id'], $validated['ara_ara_id'])) {
+                if ($this->wouldCreateCircularReference(0, $validated['ara_ara_id'])) {
                     return response()->json([
                         'success' => false,
                         'message' => 'This would create a circular reference',
@@ -246,15 +237,28 @@ class AuditAreaController extends Controller
     /**
      * Check if setting a parent would create a circular reference
      */
-    private function wouldCreateCircularReference(int $childId, int $proposedParentId): bool
+    private function wouldCreateCircularReference($parentId, $childId): bool
     {
-        $currentParent = AuditArea::find($proposedParentId);
+        if (!$parentId) {
+            // No parent, so no circular reference possible
+            return false;
+        }
 
-        while ($currentParent) {
-            if ($currentParent->ara_id == $childId) {
-                return true;  // Circular reference found
+        // Walk up the parent chain of the proposed parent
+        $currentParentId = $parentId;
+
+        while ($currentParentId) {
+            if ($currentParentId == $childId && $childId > 0) {
+                // Parent chain loops back to the current child -> circular
+                return true;
             }
-            $currentParent = $currentParent->parent;
+
+            $parent = AuditArea::find($currentParentId);
+            if (!$parent) {
+                break;  // Reached top of tree
+            }
+
+            $currentParentId = $parent->ara_parent_id;
         }
 
         return false;
