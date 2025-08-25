@@ -16,7 +16,8 @@ class UserAccountController extends Controller
     public function index(): JsonResponse
     {
         try {
-            $userAccounts = UserAccount::with('auditor')->get();
+            // Load auditor and agency relationships
+            $userAccounts = UserAccount::with('auditor.agency')->get();
 
             // Transform data to match frontend format
             $transformedUserAccounts = $userAccounts->map(function ($user) {
@@ -32,6 +33,12 @@ class UserAccountController extends Controller
                     'email' => $user->usr_email,
                     'active' => $user->usr_active,
                     'logged' => $user->usr_logged,
+                    'agencyName' => $user->auditor && $user->auditor->agency
+                        ? $user->auditor->agency->agn_name
+                        : 'N/A',
+                    'agencyAcronym' => $user->auditor && $user->auditor->agency
+                        ? $user->auditor->agency->agn_acronym
+                        : 'N/A',
                 ];
             });
 
@@ -67,10 +74,15 @@ class UserAccountController extends Controller
             // Set default logged status if not provided
             $validated['usr_logged'] = $validated['usr_logged'] ?? 0;
 
+            // Hash password if not hashed
+            if (isset($validated['usr_password'])) {
+                $validated['usr_password'] = Hash::make($validated['usr_password']);
+            }
+
             $userAccount = UserAccount::create($validated);
 
-            // Load the relationship and transform
-            $userAccount->load('auditor');
+            // Load the relationships and transform
+            $userAccount->load('auditor.agency');
             $transformedUserAccount = [
                 'id' => $userAccount->usr_id,
                 'name' => $userAccount->usr_name,
@@ -83,6 +95,12 @@ class UserAccountController extends Controller
                 'email' => $userAccount->usr_email,
                 'active' => $userAccount->usr_active,
                 'logged' => $userAccount->usr_logged,
+                'agencyName' => $userAccount->auditor && $userAccount->auditor->agency
+                    ? $userAccount->auditor->agency->agn_name
+                    : 'N/A',
+                'agencyAcronym' => $userAccount->auditor && $userAccount->auditor->agency
+                    ? $userAccount->auditor->agency->agn_acronym
+                    : 'N/A',
             ];
 
             return response()->json([
@@ -111,8 +129,10 @@ class UserAccountController extends Controller
     public function show(int $id): JsonResponse
     {
         try {
-            $userAccount = UserAccount::with('auditor')->findOrFail($id);
+            $userAccount = UserAccount::with('auditor.agency')->findOrFail($id);
 
+            // Load the relationships and transform
+            $userAccount->load('auditor.agency');
             $transformedUserAccount = [
                 'id' => $userAccount->usr_id,
                 'name' => $userAccount->usr_name,
@@ -125,6 +145,12 @@ class UserAccountController extends Controller
                 'email' => $userAccount->usr_email,
                 'active' => $userAccount->usr_active,
                 'logged' => $userAccount->usr_logged,
+                'agencyName' => $userAccount->auditor && $userAccount->auditor->agency
+                    ? $userAccount->auditor->agency->agn_name
+                    : 'N/A',
+                'agencyAcronym' => $userAccount->auditor && $userAccount->auditor->agency
+                    ? $userAccount->auditor->agency->agn_acronym
+                    : 'N/A',
             ];
 
             return response()->json([
@@ -158,10 +184,15 @@ class UserAccountController extends Controller
                 'usr_logged' => 'sometimes|required|integer|in:0,1',
             ]);
 
+            // Hash password if it's being updated
+            if (isset($validated['usr_password'])) {
+                $validated['usr_password'] = Hash::make($validated['usr_password']);
+            }
+
             $userAccount->update($validated);
 
-            // Load the relationship and transform
-            $userAccount->load('auditor');
+            // Load the relationships and transform
+            $userAccount->load('auditor.agency');
             $transformedUserAccount = [
                 'id' => $userAccount->usr_id,
                 'name' => $userAccount->usr_name,
@@ -174,6 +205,12 @@ class UserAccountController extends Controller
                 'email' => $userAccount->usr_email,
                 'active' => $userAccount->usr_active,
                 'logged' => $userAccount->usr_logged,
+                'agencyName' => $userAccount->auditor && $userAccount->auditor->agency
+                    ? $userAccount->auditor->agency->agn_name
+                    : 'N/A',
+                'agencyAcronym' => $userAccount->auditor && $userAccount->auditor->agency
+                    ? $userAccount->auditor->agency->agn_acronym
+                    : 'N/A',
             ];
 
             return response()->json([
@@ -241,7 +278,8 @@ class UserAccountController extends Controller
                 }
             }
 
-            $userAccount->usr_password = $validated['new_password'];
+            // Hash the new password before saving
+            $userAccount->usr_password = Hash::make($validated['new_password']);
             $userAccount->save();
 
             return response()->json([
