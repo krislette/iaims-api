@@ -70,7 +70,6 @@ class InternalControlController extends Controller
             DB::beginTransaction();
 
             $internalControl = InternalControl::create([
-                'ic_id' => $validated['ic_id'],
                 'ic_ara_id' => $validated['ic_ara_id'],
                 'ic_category' => $validated['ic_category'],
                 'ic_desc' => $validated['ic_desc'],
