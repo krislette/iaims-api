@@ -27,42 +27,12 @@ class UserAccountSeeder extends Seeder
                 'usr_logged' => 0,
             ],
             [
-                'usr_id' => 5002,
-                'usr_name' => 'Maria Garcia Reyes',
-                'usr_aur_id' => 1002,  // Matches AuditorSeeder ID
-                'usr_level' => 2,  // Internal Auditor
-                'usr_email' => 'internal.senior@iaims.gov.ph',
-                'usr_password' => Hash::make('auditor123'),
-                'usr_active' => 1,
-                'usr_logged' => 0,
-            ],
-            [
-                'usr_id' => 5003,
-                'usr_name' => 'Roberto Mendoza Dela Cruz Sr.',
-                'usr_aur_id' => 1003,  // Matches AuditorSeeder ID
-                'usr_level' => 3,  // External Auditor
-                'usr_email' => 'external@audit-firm.com',
-                'usr_password' => Hash::make('external123'),
-                'usr_active' => 1,
-                'usr_logged' => 0,
-            ],
-            [
                 'usr_id' => 5004,
                 'usr_name' => 'Ana Lopez Santos',
                 'usr_aur_id' => 1004,  // Matches AuditorSeeder ID
-                'usr_level' => 4,  // Audit Manager
-                'usr_email' => 'manager@iaims.gov.ph',
-                'usr_password' => Hash::make('manager123'),
-                'usr_active' => 1,
-                'usr_logged' => 0,
-            ],
-            [
-                'usr_id' => 5005,
-                'usr_name' => 'Miguel Ramos Gonzales',
-                'usr_aur_id' => 1005,  // Matches AuditorSeeder ID
-                'usr_level' => 5,  // Audit Supervisor
-                'usr_email' => 'supervisor@iaims.gov.ph',
-                'usr_password' => Hash::make('supervisor123'),
+                'usr_level' => 2,  // Director
+                'usr_email' => 'director@iaims.gov.ph',
+                'usr_password' => Hash::make('director123'),
                 'usr_active' => 1,
                 'usr_logged' => 0,
             ],
@@ -70,9 +40,39 @@ class UserAccountSeeder extends Seeder
                 'usr_id' => 5006,
                 'usr_name' => 'Carmen Flores Torres',
                 'usr_aur_id' => 1006,  // Matches AuditorSeeder ID
-                'usr_level' => 6,  // Senior Auditor
-                'usr_email' => 'senior.auditor@iaims.gov.ph',
-                'usr_password' => Hash::make('senior123'),
+                'usr_level' => 3,  // Division Chief
+                'usr_email' => 'division.chief@iaims.gov.ph',
+                'usr_password' => Hash::make('divisionchief123'),
+                'usr_active' => 1,
+                'usr_logged' => 0,
+            ],
+            [
+                'usr_id' => 5005,
+                'usr_name' => 'Miguel Ramos Gonzales',
+                'usr_aur_id' => 1005,  // Matches AuditorSeeder ID
+                'usr_level' => 4,  // Audit Supervisor
+                'usr_email' => 'supervisor@iaims.gov.ph',
+                'usr_password' => Hash::make('supervisor123'),
+                'usr_active' => 1,
+                'usr_logged' => 0,
+            ],
+            [
+                'usr_id' => 5002,
+                'usr_name' => 'Maria Garcia Reyes',
+                'usr_aur_id' => 1002,  // Matches AuditorSeeder ID
+                'usr_level' => 5,  // Internal Auditor
+                'usr_email' => 'internal.auditor@iaims.gov.ph',
+                'usr_password' => Hash::make('internal123'),
+                'usr_active' => 1,
+                'usr_logged' => 0,
+            ],
+            [
+                'usr_id' => 5003,
+                'usr_name' => 'Roberto Mendoza Dela Cruz Sr.',
+                'usr_aur_id' => 1003,  // Matches AuditorSeeder ID
+                'usr_level' => 6,  // External Auditor
+                'usr_email' => 'external.auditor@audit-firm.com',
+                'usr_password' => Hash::make('external123'),
                 'usr_active' => 1,
                 'usr_logged' => 0,
             ],
@@ -80,9 +80,9 @@ class UserAccountSeeder extends Seeder
                 'usr_id' => 5007,
                 'usr_name' => 'Paolo Cruz Mendoza',
                 'usr_aur_id' => 1007,  // Matches AuditorSeeder ID
-                'usr_level' => 7,  // Junior Auditor
-                'usr_email' => 'junior.auditor@iaims.gov.ph',
-                'usr_password' => Hash::make('junior123'),
+                'usr_level' => 7,  // Auditee
+                'usr_email' => 'auditee@iaims.gov.ph',
+                'usr_password' => Hash::make('auditee123'),
                 'usr_active' => 1,
                 'usr_logged' => 0,
             ],
@@ -91,8 +91,8 @@ class UserAccountSeeder extends Seeder
                 'usr_name' => 'Lisa Morales Villanueva',
                 'usr_aur_id' => 1008,  // Matches AuditorSeeder ID
                 'usr_level' => 8,  // Read Only User
-                'usr_email' => 'readonly@iaims.gov.ph',
-                'usr_password' => Hash::make('readonly123'),
+                'usr_email' => 'authorized.viewer@iaims.gov.ph',
+                'usr_password' => Hash::make('authorizedviewer123'),
                 'usr_active' => 1,
                 'usr_logged' => 0,
             ],
