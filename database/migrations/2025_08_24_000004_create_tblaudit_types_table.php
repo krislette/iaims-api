@@ -10,12 +10,10 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('tblaudit_criteria', function (Blueprint $table) {
-            $table->integer('cra_id')->primary();
-            $table->string('cra_name', 255);
-            $table->string('cra_areas', 100);
-            $table->string('cra_references', 255);
-            $table->tinyInteger('cra_active');
+        Schema::create('tblaudit_types', function (Blueprint $table) {
+            $table->tinyInteger('aud_typ_id')->primary()->autoIncrement();
+            $table->string('aud_typ_name', 50);
+            $table->tinyInteger('aud_typ_active');
             $table->timestamps();
         });
     }
@@ -25,6 +23,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('tblaudit_criteria');
+        Schema::dropIfExists('tblaudit_types');
     }
 };

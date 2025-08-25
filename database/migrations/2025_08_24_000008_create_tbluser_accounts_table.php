@@ -11,7 +11,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('tbluser_accounts', function (Blueprint $table) {
-            $table->integer('usr_id')->primary();
+            $table->integer('usr_id')->primary()->autoIncrement();
             $table->string('usr_name', 150);
             $table->integer('usr_aur_id');
             $table->tinyInteger('usr_level');

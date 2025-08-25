@@ -52,14 +52,13 @@ class AgencyController extends Controller
     {
         try {
             $validated = $request->validate([
-                'agn_id' => 'required|integer|unique:tblagencies,agn_id',
                 'agn_name' => 'required|string|max:255',
-                'agn_acronym' => 'required|string|max:30',
-                'agn_grp_code' => 'required|string|size:2|exists:tblagency_groupings,agn_grp_code',
-                'agn_address' => 'required|string|max:255',
-                'agn_head_name' => 'required|string|max:150',
-                'agn_head_position' => 'required|string|max:150',
-                'agn_contact_details' => 'required|string',
+                'agn_acronym' => 'nullable|string|max:30',
+                'agn_grp_code' => 'nullable|string|size:2|exists:tblagency_groupings,agn_grp_code',
+                'agn_address' => 'nullable|string|max:255',
+                'agn_head_name' => 'nullable|string|max:150',
+                'agn_head_position' => 'nullable|string|max:150',
+                'agn_contact_details' => 'nullable|string',
             ]);
 
             $agency = Agency::create($validated);

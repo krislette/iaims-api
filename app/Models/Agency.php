@@ -11,11 +11,10 @@ class Agency extends Model
 
     protected $table = 'tblagencies';
     protected $primaryKey = 'agn_id';
-    public $incrementing = false;
+    public $incrementing = true;
     protected $keyType = 'integer';
 
     protected $fillable = [
-        'agn_id',
         'agn_name',
         'agn_acronym',
         'agn_grp_code',

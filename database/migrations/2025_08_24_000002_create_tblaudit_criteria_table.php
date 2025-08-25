@@ -10,10 +10,12 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('tbldocument_types', function (Blueprint $table) {
-            $table->tinyInteger('doc_typ_id')->primary();
-            $table->string('doc_typ_name', 100);
-            $table->tinyInteger('doc_typ_active');
+        Schema::create('tblaudit_criteria', function (Blueprint $table) {
+            $table->integer('cra_id')->primary()->autoIncrement();
+            $table->string('cra_name', 255);
+            $table->string('cra_areas', 100);
+            $table->string('cra_references', 255);
+            $table->tinyInteger('cra_active');
             $table->timestamps();
         });
     }
@@ -23,6 +25,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('tbldocument_types');
+        Schema::dropIfExists('tblaudit_criteria');
     }
 };
