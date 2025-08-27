@@ -206,7 +206,7 @@ class AgencyController extends Controller
         } catch (\Exception $e) {
             return response()->json([
                 'success' => false,
-                'message' => 'Failed to delete agency',
+                'message' => 'Cannot delete this agency because it is linked to other records. Please remove or reassign its dependent items first.',
                 'error' => $e->getMessage()
             ], 500);
         }
