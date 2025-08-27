@@ -106,12 +106,12 @@ class UserAccountSeeder extends Seeder
         $this->command->info('Created 8 user accounts');
         $this->command->info('Default passwords:');
         $this->command->info('- System Admin: admin123');
-        $this->command->info('- Internal Auditor: auditor123');
-        $this->command->info('- External Auditor: external123');
-        $this->command->info('- Audit Manager: manager123');
+        $this->command->info('- Director: director123');
+        $this->command->info('- Division Chief: divisionchief123');
         $this->command->info('- Audit Supervisor: supervisor123');
-        $this->command->info('- Senior Auditor: senior123');
-        $this->command->info('- Junior Auditor: junior123');
-        $this->command->info('- Read Only User: readonly123');
+        $this->command->info('- Internal Auditor: internal123');
+        $this->command->info('- External Auditor: external123');
+        $this->command->info('- Auditee: auditee123');
+        $this->command->info('- Authorized Viewer: authorizedviewer123');
     }
 }

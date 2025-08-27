@@ -14,11 +14,12 @@ class AgencySeeder extends Seeder
     {
         // First, let's seed some agency groupings if they don't exist
         $groupings = [
-            ['agn_grp_code' => 'A1', 'agn_grp_name' => 'National Government Agencies'],
-            ['agn_grp_code' => 'A2', 'agn_grp_name' => 'Local Government Units'],
-            ['agn_grp_code' => 'A3', 'agn_grp_name' => 'State Universities and Colleges'],
-            ['agn_grp_code' => 'A4', 'agn_grp_name' => 'Government-Owned and Controlled Corporations'],
-            ['agn_grp_code' => 'A5', 'agn_grp_name' => 'Constitutional Bodies'],
+            ['agn_grp_code' => 'CO', 'agn_grp_name' => 'CO - DOST-CO'],
+            ['agn_grp_code' => 'SC', 'agn_grp_name' => 'SC - Sectorial Planning Council'],
+            ['agn_grp_code' => 'CB', 'agn_grp_name' => 'CB - College Bodies'],
+            ['agn_grp_code' => 'RD', 'agn_grp_name' => 'RD - Research and Development Institutes'],
+            ['agn_grp_code' => 'ST', 'agn_grp_name' => 'ST - Scientific and Technical Service Institutes'],
+            ['agn_grp_code' => 'RO', 'agn_grp_name' => 'RO - Regional Offices'],
         ];
 
         foreach ($groupings as $grouping) {
@@ -34,7 +35,7 @@ class AgencySeeder extends Seeder
                 'agn_id' => 1001,
                 'agn_name' => 'Department of Science and Technology',
                 'agn_acronym' => 'DOST',
-                'agn_grp_code' => 'A1',
+                'agn_grp_code' => 'CO',
                 'agn_address' => 'DOST Compound, General Santos Ave., Bicutan, Taguig City',
                 'agn_head_name' => 'Renato U. Solidum Jr.',
                 'agn_head_position' => 'Secretary',
@@ -46,7 +47,7 @@ class AgencySeeder extends Seeder
                 'agn_id' => 1002,
                 'agn_name' => 'Department of Education',
                 'agn_acronym' => 'DepEd',
-                'agn_grp_code' => 'A1',
+                'agn_grp_code' => 'CO',
                 'agn_address' => 'DepEd Complex, Meralco Avenue, Pasig City',
                 'agn_head_name' => 'Sara Z. Duterte',
                 'agn_head_position' => 'Secretary',
@@ -58,7 +59,7 @@ class AgencySeeder extends Seeder
                 'agn_id' => 1003,
                 'agn_name' => 'Commission on Audit',
                 'agn_acronym' => 'COA',
-                'agn_grp_code' => 'A5',
+                'agn_grp_code' => 'SC',
                 'agn_address' => 'Commonwealth Avenue, Quezon City',
                 'agn_head_name' => 'Gamaliel A. Cordoba',
                 'agn_head_position' => 'Chairperson',
@@ -70,7 +71,7 @@ class AgencySeeder extends Seeder
                 'agn_id' => 1004,
                 'agn_name' => 'University of the Philippines',
                 'agn_acronym' => 'UP',
-                'agn_grp_code' => 'A3',
+                'agn_grp_code' => 'CB',
                 'agn_address' => 'Diliman, Quezon City',
                 'agn_head_name' => 'Angelo A. Jimenez',
                 'agn_head_position' => 'President',
@@ -82,7 +83,7 @@ class AgencySeeder extends Seeder
                 'agn_id' => 1005,
                 'agn_name' => 'Social Security System',
                 'agn_acronym' => 'SSS',
-                'agn_grp_code' => 'A4',
+                'agn_grp_code' => 'SC',
                 'agn_address' => 'SSS Building, East Avenue, Diliman, Quezon City',
                 'agn_head_name' => 'Michael G. Regino',
                 'agn_head_position' => 'President and CEO',
