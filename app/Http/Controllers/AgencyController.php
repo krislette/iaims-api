@@ -15,7 +15,7 @@ class AgencyController extends Controller
     public function index(): JsonResponse
     {
         try {
-            $agencies = Agency::with('agencyGroup')->get();
+            $agencies = Agency::with('agencyGroup')->where('agn_active', 1)->get();
 
             // Transform data to match frontend format
             $transformedAgencies = $agencies->map(function ($agency) {
@@ -29,6 +29,7 @@ class AgencyController extends Controller
                     'classificationGroup' => $agency->agencyGroup ? $agency->agencyGroup->agn_grp_name : 'N/A',
                     'address' => $agency->agn_address,
                     'groupCode' => $agency->agn_grp_code,
+                    'active' => $agency->agn_active,
                 ];
             });
 
@@ -59,6 +60,7 @@ class AgencyController extends Controller
                 'agn_head_name' => 'nullable|string|max:150',
                 'agn_head_position' => 'nullable|string|max:150',
                 'agn_contact_details' => 'nullable|string',
+                'agn_active' => 'sometimes|integer|in:0,1',
             ]);
 
             $agency = Agency::create($validated);
@@ -75,6 +77,7 @@ class AgencyController extends Controller
                 'classificationGroup' => $agency->agencyGroup ? $agency->agencyGroup->agn_grp_name : 'N/A',
                 'address' => $agency->agn_address,
                 'groupCode' => $agency->agn_grp_code,
+                'active' => $agency->agn_active,
             ];
 
             return response()->json([
@@ -115,6 +118,7 @@ class AgencyController extends Controller
                 'classificationGroup' => $agency->agencyGroup ? $agency->agencyGroup->agn_grp_name : 'N/A',
                 'address' => $agency->agn_address,
                 'groupCode' => $agency->agn_grp_code,
+                'active' => $agency->agn_active,
             ];
 
             return response()->json([
@@ -146,6 +150,7 @@ class AgencyController extends Controller
                 'agn_head_name' => 'sometimes|required|string|max:150',
                 'agn_head_position' => 'sometimes|required|string|max:150',
                 'agn_contact_details' => 'sometimes|required|string',
+                'agn_active' => 'sometimes|integer|in:0,1',
             ]);
 
             $agency->update($validated);
@@ -162,6 +167,7 @@ class AgencyController extends Controller
                 'classificationGroup' => $agency->agencyGroup ? $agency->agencyGroup->agn_grp_name : 'N/A',
                 'address' => $agency->agn_address,
                 'groupCode' => $agency->agn_grp_code,
+                'active' => $agency->agn_active,
             ];
 
             return response()->json([

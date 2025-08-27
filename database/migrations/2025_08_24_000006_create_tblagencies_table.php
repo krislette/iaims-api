@@ -19,6 +19,7 @@ return new class extends Migration {
             $table->string('agn_head_name', 150);
             $table->string('agn_head_position', 150);
             $table->text('agn_contact_details');
+            $table->tinyInteger('agn_active')->default(1);
             $table->timestamps();
 
             $table->foreign('agn_grp_code')->references('agn_grp_code')->on('tblagency_groupings');

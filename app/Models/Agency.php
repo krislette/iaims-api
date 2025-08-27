@@ -22,6 +22,7 @@ class Agency extends Model
         'agn_head_name',
         'agn_head_position',
         'agn_contact_details',
+        'agn_active',
     ];
 
     // Relationship with agency groupings
