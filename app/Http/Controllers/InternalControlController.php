@@ -175,6 +175,7 @@ class InternalControlController extends Controller
             $internalControl = InternalControl::findOrFail($id);
 
             $validated = $request->validate([
+                'ic_ara_id' => 'sometimes|required|integer|min:0|max:127|exists:tblaudit_areas,ara_id',
                 'ic_category' => 'sometimes|required|string|max:100',
                 'ic_desc' => 'sometimes|required|string|max:500',
                 'ic_active' => 'sometimes|required|integer|in:0,1',
